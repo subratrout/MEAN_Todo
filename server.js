@@ -41,4 +41,46 @@ app.get('/api/todos', function(req, res){
 	})
 });
 
+// create a new todo and get all todos after create
 
+app.post('/api/todos', function(req, res){
+	Todo.create({text: req.body.text, done: false}, function(err, todo){
+		if(err)
+		{
+			res.send(err);
+		};
+		Todo.find(function(err, todos){
+			if(err)
+			{
+				res.send(drr)
+			}
+			else
+			{
+				res.json(todos);
+			}
+		})
+	})
+})
+
+// delete a todo from list
+
+app.delete('api/todos/:todo_id', function(req, res){
+	Todo.remove({_id: req.params.todo_id}, function(err, todo){
+		if(err)
+		{
+			res.send(err);
+		}
+
+		// return all todo after deleting one
+		Todo.find(function(err, todos){
+			if(err)
+			{
+				res.send(err);
+			}
+			else
+			{
+				res.json(todos);
+			}
+		})
+	})
+})
