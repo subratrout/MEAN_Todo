@@ -22,9 +22,7 @@ app.use(methodOverride());
 
 //Define model
 var Todo = mongoose.model('Todo', {text:String})
-// listen (start app with node server.js) ======================================
-app.listen(8000);
-console.log("App listening on port 8000");
+
 
 
 // Express Routes
@@ -84,3 +82,17 @@ app.delete('api/todos/:todo_id', function(req, res){
 		})
 	})
 })
+
+// application
+
+
+//load index view file for angular
+app.get('*', function(req, res){
+	res.sendfile('./public/index.html');
+})
+
+
+
+// listen (start app with node server.js) ======================================
+app.listen(8000);
+console.log("App listening on port 8000");
