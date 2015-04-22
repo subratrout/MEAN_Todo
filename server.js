@@ -88,7 +88,7 @@ app.delete('api/todos/:todo_id', function(req, res){
 
 //load index view file for angular
 app.get('*', function(req, res){
-	res.sendfile('./public/index.html');
+	res.sendfile(__dirname + '/public/index.html');
 })
 
 

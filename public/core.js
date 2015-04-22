@@ -1,6 +1,6 @@
 var Todo = angular.module('Todo', []);
 
-function mainCongroller($scope, $http){
+function mainController($scope, $http){
 	$scope.formData = {};
 	
 	//get all todos and show
@@ -25,7 +25,7 @@ function mainCongroller($scope, $http){
 	// select a todo after checking it
 
 	$scope.deleteTodo = function(id){
-		$http.delete('/api/todos'+id).success(function(data){
+		$http.delete('/api/todos/'+id).success(function(data){
 			$scope.todos = data;
 			console.log(data);
 		}).error(function(data){
