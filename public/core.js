@@ -25,7 +25,7 @@ function mainController($scope, $http){
 	// select a todo after checking it
 
 	$scope.deleteTodo = function(id){
-		$http.delete('/api/todos/'+id).success(function(data){
+		$http.get('/api/todos/' + id).success(function(data){
 			$scope.todos = data;
 			console.log(data);
 		}).error(function(data){

@@ -62,7 +62,7 @@ app.post('/api/todos', function(req, res){
 
 // delete a todo from list
 
-app.delete('api/todos/:todo_id', function(req, res){
+app.get('/api/todos/:todo_id', function(req, res){
 	Todo.remove({_id: req.params.todo_id}, function(err, todo){
 		if(err)
 		{
@@ -87,9 +87,9 @@ app.delete('api/todos/:todo_id', function(req, res){
 
 
 //load index view file for angular
-app.get('*', function(req, res){
-	res.sendfile(__dirname + '/public/index.html');
-})
+// app.get('*', function(req, res){
+// 	res.sendfile(__dirname + '/public/index.html');
+// })
 
 
 
